@@ -1,5 +1,7 @@
 <!doctype html>
 <html lang="en">
+<!doctype html>
+<html lang="en">
  <head>
 <meta charset="UTF-8">
 <title>Love Rain Infinite</title>
@@ -14,7 +16,7 @@
 
   .center {
     position: absolute;
-    top: 45%;
+    top: 90%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
@@ -92,6 +94,8 @@ function createHeart() {
  <audio id="bgMusic" loop>
   <source src="bg.mp3" type="audio/mpeg">
 </audio>
+<body>
+  
 {
       margin: 0;
       overflow: hidden;
@@ -114,7 +118,7 @@ function createHeart() {
     /* TEKS TENGAH */
     .center-text {
       position: absolute;
-      top: 45%;
+      top: 90%;
       left: 50%;
       transform: translate(-50%, -50%);
       text-align: center;
@@ -140,12 +144,12 @@ function createHeart() {
       transform: scale(1.1);
 
 <button onclick="playMusic()">▶ Play</button>
-
 <script>
 function playMusic(){
   const music = document.getElementById("bgMusic");
   music.currentTime = 0; // mulai dari awal (hasil potongan 30 detik)
   music.play();
+  
 }
 </script>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
