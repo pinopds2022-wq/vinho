@@ -1,6 +1,94 @@
 <!doctype html>
 <html lang="en">
  <head>
+<meta charset="UTF-8">
+<title>Love Rain Infinite</title>
+
+<style>
+  body {
+    margin: 0;
+    overflow: hidden;
+    background: black;
+    font-family: Arial;
+  }
+
+  .center {
+    position: absolute;
+    top: 45%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: pink;
+    font-size: 30px;
+    text-shadow: 0 0 15px red;
+  }
+
+  .btn {
+    margin-top: 20px;
+    padding: 15px 30px;
+    font-size: 20px;
+    border: none;
+    border-radius: 20px;
+    background: pink;
+    cursor: pointer;
+    box-shadow: 0 0 15px red;
+  }
+
+  .heart {
+    position: absolute;
+    top: -50px;
+    font-size: 24px;
+    animation: fall linear forwards;
+  }
+
+  @keyframes fall {
+    to {
+      transform: translateY(110vh);
+      opacity: 0;
+    }
+  }
+</style>
+</head>
+
+<body>
+
+<div class="center">
+  
+
+  <button class="btn" onclick="startRain()">CLICK</button>
+</div>
+
+<script>
+let raining = false;
+
+function startRain() {
+  if (raining) return; // biar ga double
+  raining = true;
+
+  setInterval(() => {
+    createHeart();
+  }, 200); // setiap 0.2 detik muncul love
+}
+
+function createHeart() {
+  const heart = document.createElement("div");
+  heart.className = "heart";
+  heart.innerText = "❤️";
+
+  heart.style.left = Math.random() * 100 + "vw";
+
+  let duration = Math.random() * 3 + 2;
+  heart.style.animationDuration = duration + "s";
+
+  document.body.appendChild(heart);
+
+  setTimeout(() => {
+    heart.remove();
+  }, duration * 1000);
+}
+</script>
+
+ <head>
  <audio id="bgMusic" loop>
   <source src="bg.mp3" type="audio/mpeg">
 </audio>
