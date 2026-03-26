@@ -4,6 +4,52 @@
  <audio id="bgMusic" loop>
   <source src="bg.mp3" type="audio/mpeg">
 </audio>
+{
+      margin: 0;
+      overflow: hidden;
+      background: black;
+      font-family: Arial;
+    }
+
+    .love {
+      position: absolute;
+      color: pink;
+      font-size: 20px;
+      animation: float 4s infinite;
+    }
+
+    @keyframes float {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    /* TEKS TENGAH */
+    .center-text {
+      position: absolute;
+      top: 45%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      color: pink;
+      font-size: 30px;
+      text-shadow: 0 0 15px red;
+    }
+
+    /* BUTTON BESAR */
+    .music-btn {
+      margin-top: 20px;
+      padding: 15px 30px;
+      font-size: 20px;
+      border: none;
+      border-radius: 20px;
+      background: pink;
+      cursor: pointer;
+      box-shadow: 0 0 15px red;
+      transition: 0.3s;
+    }
+
+    .music-btn:hover {
+      transform: scale(1.1);
 
 <button onclick="playMusic()">▶ Play</button>
 
@@ -13,10 +59,6 @@ function playMusic(){
   music.currentTime = 0; // mulai dari awal (hasil potongan 30 detik)
   music.play();
 }
- <meta charset="UTF-8">
-  <title>i love you</title>
-  </style>
-</head>
 </script>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
   <link rel="stylesheet" href="styles.css">
