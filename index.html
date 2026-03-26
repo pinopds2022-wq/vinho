@@ -5,11 +5,19 @@
   <source src="bg.mp3" type="audio/mpeg">
 </audio>
 
+<button onclick="playMusic()">▶ Play</button>
 
+<script>
+function playMusic(){
+  const music = document.getElementById("bgMusic");
+  music.currentTime = 0; // mulai dari awal (hasil potongan 30 detik)
+  music.play();
+}
+ <meta charset="UTF-8">
+  <title>i love you</title>
 
-  
-  
-{
+  <style>
+    body {
       margin: 0;
       overflow: hidden;
       background: black;
@@ -55,14 +63,9 @@
 
     .music-btn:hover {
       transform: scale(1.1);
-<button onclick="playMusic()">▶ Play</button>
-
-<script>
-function playMusic(){
-  const music = document.getElementById("bgMusic");
-  music.currentTime = 0; // mulai dari awal (hasil potongan 30 detik)
-  music.play();
-}
+    }
+  </style>
+</head>
 </script>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
   <link rel="stylesheet" href="styles.css">
