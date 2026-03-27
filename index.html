@@ -6,7 +6,6 @@
 <meta charset="UTF-8">
 <title>Love Rain Infinite</title>
 
-
 <style>
   body {
     margin: 0;
@@ -15,38 +14,40 @@
     font-family: Arial;
   }
 
-  /* TEXT */
   .center {
     position: absolute;
-    top: 90%;
+    top: 45%;
     left: 30%;
     transform: translate(-50%, -50%);
     text-align: center;
     color: pink;
-    font-size: 30px;
+    font-size: 28px;
     text-shadow: 0 0 15px red;
   }
 
-  /* BUTTON */
   .btn {
-    position: fixed;
-    bottom: 30px;
-    left: 30%;
-    transform: translateX(-50%);
-    padding: 18px 40px;
-    font-size: 22px;
+    display: block;
+    margin: 15px auto;
+    padding: 15px 30px;
+    font-size: 20px;
     border: none;
-    border-radius: 25px;
+    border-radius: 20px;
     background: pink;
     cursor: pointer;
-    box-shadow: 0 0 20px red;
+    box-shadow: 0 0 15px red;
+    transition: 0.2s;
   }
 
   .btn:hover {
-    transform: translateX(-50%) scale(1.1);
+    transform: scale(1.1);
   }
 
-  /* LOVE */
+  #gaboleh {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
   .heart {
     position: absolute;
     top: -50px;
@@ -56,7 +57,7 @@
 
   @keyframes fall {
     to {
-      transform: translateY(110vh);
+      transform: translateY(100vh);
       opacity: 0;
     }
   }
@@ -65,39 +66,43 @@
 
 <body>
 
-<!-- AUDIO -->
 <audio id="bgMusic" loop>
   <source src="bg.mp3" type="audio/mpeg">
 </audio>
 
-<!-- TEXT -->
 <div class="center">
-   <br>
+  HAII TANTE <br>
+  MINTA WA NYAAA !!!!! <br><br>
 
+  <!-- MUSIK -->
+  <button class="btn" onclick="toggleMusic()">🎵 PLAY MUSIK</button>
+
+  <!-- HUJAN LOVE -->
+  <button class="btn" onclick="startRain()">💖 HUJAN LOVE</button>
+
+  <!-- WA -->
+  <a href="https://wa.me/6287861529699" target="_blank">
+    <button class="btn">📱 minta wa dong maniez</button>
+  </a>
+
+  <!-- GABOLEH -->
+  <button class="btn" id="gaboleh">😈 gaboleh</button>
 </div>
 
-<!-- 1 TOMBOL -->
-<button class="btn" onclick="startAll()">💖 CLICK 💖</button>
-
 <script>
-let started = false;
+let raining = false;
+let isPlaying = false;
 
-/* START SEMUA */
-function startAll() {
-  if (started) return;
-  started = true;
+/* HUJAN LOVE */
+function startRain() {
+  if (raining) return;
+  raining = true;
 
-  // play music
-  const music = document.getElementById("bgMusic");
-  music.play();
-
-  // start hujan love
   setInterval(() => {
     createHeart();
   }, 200);
 }
 
-/* LOVE FUNCTION */
 function createHeart() {
   const heart = document.createElement("div");
   heart.className = "heart";
@@ -112,47 +117,50 @@ function createHeart() {
 
   setTimeout(() => heart.remove(), duration * 1000);
 }
-</script>
 
-</body>
-</html>
-<body>
+/* MUSIC */
+function toggleMusic() {
+  const music = document.getElementById("bgMusic");
 
-<div class="center">
-  
+  if (!isPlaying) {
+    music.play();
+  } else {
+    music.pause();
+  }
 
-  <button class="btn" onclick="startRain()">CLICK</button>
-</div>
-
-<script>
-let raining = false;
-
-function startRain() {
-  if (raining) return; // biar ga double
-  raining = true;
-
-  setInterval(() => {
-    createHeart();
-  }, 200); // setiap 0.2 detik muncul love
+  isPlaying = !isPlaying;
 }
 
-function createHeart() {
-  const heart = document.createElement("div");
-  heart.className = "heart";
-  heart.innerText = "❤️";
+/* GABOLEH LOGIC */
+const btn = document.getElementById("gaboleh");
 
-  heart.style.left = Math.random() * 100 + "vw";
+// posisi dasar (tengah)
+let baseX = window.innerWidth / 2;
+let baseY = window.innerHeight / 2;
 
-  let duration = Math.random() * 3 + 2;
-  heart.style.animationDuration = duration + "s";
+// HOVER → lompat kecil
+btn.addEventListener("mouseover", () => lompat(80));
+btn.addEventListener("touchstart", () => lompat(80));
 
-  document.body.appendChild(heart);
+// CLICK → lompat lebih jauh
+btn.addEventListener("click", (e) => {
+  e.preventDefault(); // biar ga sempat "kepencet"
+  lompat(200);
+});
 
-  setTimeout(() => {
-    heart.remove();
-  }, duration * 1000);
+function lompat(range) {
+  let x = baseX + (Math.random() * range - range/2);
+  let y = baseY + (Math.random() * range - range/2);
+
+  // biar tetap di layar
+  x = Math.max(0, Math.min(x, window.innerWidth - btn.offsetWidth));
+  y = Math.max(0, Math.min(y, window.innerHeight - btn.offsetHeight));
+
+  btn.style.left = x + "px";
+  btn.style.top = y + "px";
 }
 </script>
+
 
  <head>
  <audio id="bgMusic" loop>
